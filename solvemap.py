@@ -3,6 +3,9 @@ import string
 def getInfo(fileObj):
     newDict = {}
     readFile = fileObj.read().split('\n')
+    if len(readFile) < 2:
+        print('No map to check in file. ', end=' ')
+        return False
     for char in readFile[0][:-3]:
         if not char.isnumeric():
             print('Invalid characters in instruction line. Expected number of lines got: %c.' %(char), end=' ')
@@ -15,16 +18,21 @@ def getInfo(fileObj):
     newDict['map'] = readFile[1:]
     if newDict['map'][-1] == '':
         del(newDict['map'][-1])
+    if not newDict['map']:
+        print('Empty map provided. ', end='')
+        return False
+        
     return newDict
 
 def validateInfo(mapInfo):
+    
     if (len(mapInfo['map']) != mapInfo['lines']):
         print('Number of lines in map is not equal to number of lines in instruction. ', end=' ')
         return False
         
     
     for i in range(len(mapInfo['map'])):
-        if not any(j in mapInfo['validChars'] for j in mapInfo['map'][i]):
+        if not all(j in mapInfo['validChars'] for j in mapInfo['map'][i]):
             print('Characters in map not equal to characters in information line. ', end='')
             return False
         elif i < mapInfo['lines'] - 1 and len(mapInfo['map'][i]) != len(mapInfo['map'][i + 1]):
