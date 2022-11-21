@@ -54,3 +54,5 @@ eeeee
 Output: 
 
 Characters in map not equal to characters in information line. "Name of file" is an invalid map.
+
+Cheers!
