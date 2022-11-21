@@ -101,6 +101,13 @@ def solveMap(fileObj):
     if not mapInfo or not validateInfo(mapInfo):
         print('%s is an invalid map.' %(fileObj.name))
         return
+
     solvedMapInfor = getSolvedMapInfor(mapInfo)
-    print('The biggest square for map %s is %i, located at %i, %i coordinates: ' %(fileObj.name, solvedMapInfor['max_sqr'], solvedMapInfor['min_i'], solvedMapInfor['min_j']))
-    printSolved(mapInfo, solvedMapInfor) 
+    
+    if solvedMapInfor['max_sqr'] > 0:
+        print('The biggest square for map %s is %i, located at %i, %i coordinates.\nEmpty = %s\tFull = %s\t Obstacle = %s ' %(fileObj.name, solvedMapInfor['max_sqr'], \
+            solvedMapInfor['min_i'], solvedMapInfor['min_j'], mapInfo['empty'], mapInfo['full'], mapInfo['obs']))
+        printSolved(mapInfo, solvedMapInfor) 
+    else:
+        print('No valid square found. Original Map:\nEmpty = %s\tObstacle = %s\n%s' %(mapInfo['empty'], mapInfo['obs'],'\n'.join(mapInfo['map'])))
+

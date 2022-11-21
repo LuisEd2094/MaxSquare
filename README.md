@@ -17,6 +17,7 @@ Valid files are defined as:
 All lines must have the same length
 The characters on the map can only be those introduced in the first line
 The amount of lines will be equal to the 'lines' defined in the first line of the .txt
+It must contain at least 2 lines, first one with Map information and second with at least a single valid character.
 
 Example of valid map: 
 
