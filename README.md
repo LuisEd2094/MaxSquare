@@ -97,3 +97,5 @@ KNOWN ISSUES:
 Needs to check instruction lines for repeated characters.
 Needs to check if instruction line has all the needed information.
 Needs to strip new lines at the end of file
+
+3.+ 
